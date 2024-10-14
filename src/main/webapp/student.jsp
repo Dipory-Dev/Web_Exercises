@@ -12,10 +12,10 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script type="text/javascript">
         function getParameterValues() {
-            let name = "name = " + $("#name").val();
-            let kor = "kor = " + $("#kor").val();
-            let eng = "eng = " + $("#eng").val();
-            let math = "math = " + $("#math").val();
+            let name = "name=" + $("#name").val();
+            let kor = "kor=" + $("#kor").val();
+            let eng = "eng=" + $("#eng").val();
+            let math = "math=" + $("#math").val();
 
             return "?" + name + "&" + kor + "&" + eng + "&" + math;
         }
@@ -23,10 +23,15 @@
         $(function() {
             $("#process").click(function () {
                 $.ajax({
-                    url:"CalScore",
+                    url:"CalScore" + getParameterValues(),
                     dataType:"json",
-                    success:function (msg){},
-                    error:function(){}
+                    success:function (msg){
+                        console.log(msg);
+                        $("#res").html(msg.name + "'s Total score is ' " + msg.sum + ". And avg is " + msg.avg + ".");
+                    },
+                    error:function(request,status,error){
+                        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                    }
                 });
             });
         });
