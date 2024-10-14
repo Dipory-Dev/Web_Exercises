@@ -21,7 +21,13 @@
                        dataType: "xml",
                        success: function (data){
                            let empInfo = $(data).find("EMPLOYEE_ID:contains(" + empid + ")").parent();
-                           console.log(empInfo);
+                           if((empInfo).is("ROW")) {
+                               $("table input").each(function(i) {
+                                   $(this).val($(empInfo).children().eq(i).text());
+                               });
+                           } else {
+                               alert("The target does not exist.")
+                           }
                        },
                        error: function (){
                            alert("Error..:(")
