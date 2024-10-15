@@ -2,6 +2,9 @@ package com.bike.controller;
 
 import com.bike.dao.BikeDao;
 import com.bike.dto.BikeDto;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,12 +30,12 @@ public class BikeServlet extends HttpServlet {
         if (command.equals("first")) {
             response.sendRedirect("bike01.jsp");
         } else if (command.equals("first_db")) {
-//            int delres = dao.delall();
-//            if (delres > 0) {
-//                System.out.println("Delete success");
-//            } else {
-//                System.out.println("Delete failed");
-//            }
+            int delres = dao.delall();
+            if (delres > 0) {
+                System.out.println("Delete success");
+            } else {
+                System.out.println("Delete failed");
+            }
 
             String[] bikes = request.getParameterValues("bike");
             List<BikeDto> dto = new ArrayList<BikeDto>();
@@ -60,6 +64,42 @@ public class BikeServlet extends HttpServlet {
                 System.out.println("Delete failed");
                 response.sendRedirect("bike01.jsp");
             }
+        } else if (command.equals("second")) {
+            response.sendRedirect("bike02.jsp");
+        } else if (command.equals("second_db")) {
+            int res = dao.delall();
+            if (res > 0) {
+                System.out.println("Delete success");
+            } else {
+                System.out.println("Delete failed");
+            }
+
+            String obj = request.getParameter("obj");
+            System.out.println("test====");
+            JsonParser parser = new JsonParser();
+            JsonElement je = parser.parse(obj);
+            List<BikeDto> dto = new ArrayList<>();
+            System.out.println("test obj");
+            for (int i = 0; i < je.getAsJsonObject().get("DATA").getAsJsonArray().size(); i++) {
+                JsonObject tmp = je.getAsJsonObject().get("DATA").getAsJsonArray().get(i).getAsJsonObject();
+                String addr_gu = tmp.get("addr_gu").getAsString();
+                int content_id = tmp.get("content_id").getAsInt();
+                String content_nm = tmp.get("content_nm").getAsString();
+                String new_addr = tmp.get("new_addr").getAsString();
+                int cradle_count = tmp.get("cradle_count").getAsInt();
+                double longitude = tmp.get("longitude").getAsDouble();
+                double latitude = tmp.get("latitude").getAsDouble();
+
+                BikeDto tdto = new BikeDto(addr_gu, content_id, content_nm, new_addr, cradle_count, longitude, latitude);
+                dto.add(tdto);
+            }
+            int result = dao.insert(dto);
+            System.out.println(dto.size());
+            if (result > 0) {
+                System.out.println("Insert success");
+            }
+            PrintWriter out = response.getWriter();
+            out.println(result);
         }
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

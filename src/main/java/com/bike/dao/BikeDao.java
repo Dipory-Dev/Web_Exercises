@@ -68,6 +68,9 @@ public class BikeDao {
         try {
             ps = con.prepareStatement(sql);
             res = ps.executeUpdate();
+            if (res > 0) {
+                commit(con);
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

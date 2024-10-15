@@ -6,5 +6,6 @@
 </head>
 <body>
     <h2><a href="bike?command=first">First</a></h2>
+    <h2><a href="bike?command=second">Second</a></h2>
 </body>
 </html>
