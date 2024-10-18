@@ -17,8 +17,18 @@
     </select>
 
     <select id="selectOne" resultMap="mvcmap">
-        SELECT *
-        FROM MVCBOARD
-        WHERE SEQ=#{SEQ}
+        select * from mvcboard where seq = #{seq}
     </select>
+
+    <insert id="insert" parameterType="Bdto">
+        insert into mvcboard values (seq_mvcboard.nextval, #{writer}, #{title}, #{content}, current_date)
+    </insert>
+    
+    <update id="update" parameterType="Bdto">
+        update mvcboard set title = #{title}, content = #{content}, regdate = #{regdate} where seq = #{seq}
+    </update>
+
+    <delete id="delete">
+        delete from mvcboard where seq = #{seq}
+    </delete>
 </mapper>

@@ -46,19 +46,57 @@ public class MVCBoardDao extends SqlMapConfig {
 
     public int insert(MVCBoardDto board) {
         int res = 0;
+        SqlSession session = null;
+        try {
+            session = getSqlSessionFactory().openSession(false);
+            res = session.insert(namespace + "insert", board);
+
+            if (res > 0) {
+                session.commit();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+
 
         return res;
     }
 
     public int update (MVCBoardDto board) {
         int res = 0;
+        SqlSession session = null;
 
+        try {
+            session = getSqlSessionFactory().openSession(false);
+            res = session.update(namespace + "update", board);
+            if (res > 0) {
+                session.commit();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
         return res;
     }
 
     public int delete(int seq) {
         int res = 0;
-
+        SqlSession session = null;
+        try {
+            session = getSqlSessionFactory().openSession(false);
+            res = session.delete(namespace + "delete", seq);
+            if (res > 0) {
+                session.commit();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
         return res;
     }
 }
