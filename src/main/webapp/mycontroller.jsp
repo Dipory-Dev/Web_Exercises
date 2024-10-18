@@ -99,6 +99,18 @@
             request.setAttribute("url", "mycontroller.jsp?command=boarddelete");
         }
         pageContext.forward("result.jsp");
+    } else if (command.equals("muldel")) {
+        String[] seq = request.getParameterValues("chk");
+        int res = dao.multiDelete(seq);
+        if (res > 0) {
+            request.setAttribute("msg", "Successfully deleted.");
+            request.setAttribute("url", "mycontroller.jsp?command=boardlist");
+        } else {
+            request.setAttribute("msg", "Failed to delete");
+            request.setAttribute("url", "mycontroller.jsp?command=boardlist");
+        }
+        pageContext.forward("result.jsp");
+        
     }
 %>
 </body>

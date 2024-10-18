@@ -31,4 +31,11 @@
     <delete id="delete">
         delete from mvcboard where seq = #{seq}
     </delete>
+
+    <delete id="muldel">
+        delete from mvcboard where seq in
+        <foreach collection="seq" item="no" open="(" separator="," close=")">
+            #{no}
+        </foreach>
+    </delete>
 </mapper>

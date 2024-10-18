@@ -5,7 +5,9 @@ import com.mvc.dto.MVCBoardDto;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class MVCBoardDao extends SqlMapConfig {
@@ -97,6 +99,26 @@ public class MVCBoardDao extends SqlMapConfig {
         } finally {
             session.close();
         }
+        return res;
+    }
+
+    public int multiDelete(String[] seq) {
+        int res = 0;
+        Map<String, String[]> map = new HashMap<String, String[]>();
+        map.put("seq", seq);
+        SqlSession session = null;
+        try {
+            session = getSqlSessionFactory().openSession(false);
+            res = session.delete(namespace + "muldel", map);
+            if (res > 0) {
+                session.commit();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
         return res;
     }
 }
