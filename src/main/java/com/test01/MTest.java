@@ -16,5 +16,6 @@ public class MTest {
         kiwi.sayHello();
 
         MessageBean mango = (MessageBean) factory.getBean("mango");
+        mango.sayHello();
     }
 }
