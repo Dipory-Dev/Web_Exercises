@@ -14,7 +14,7 @@
 
     <servlet>
         <servlet-name>HelloServlet</servlet-name>
-        <servlet-class>com.hello.controller.HelloController</servlet-class>
+        <servlet-class>Jsp04_HelloServlet/src/main/java/com/hello/controller/HelloController.java</servlet-class>
         <init-param>
             <param-name>driver</param-name>
             <param-value>driver.jdbc.OracleDriver</param-value>
