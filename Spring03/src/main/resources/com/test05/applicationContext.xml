@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="kim" class="com.test05.Emp" c:name="Kim" c:salary="5000000"/>
+    <bean id="kimjs" class="com.test05.Developer" c:dept="Dev" c:emp-ref="kim"/>
+
+    <bean id="kang" class="com.test05.Emp" p:name="kang" p:salary="1999990"/>
+    <bean id="kangdw" class="com.test05.Engineer" p:dept="Tec" p:emp-ref="kang"/>
+</beans>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="kimemp" class="com.test04.Emp">
+        <property name="salary" value="5000000"/>
+        <property name="name" value="kim"/>
+    </bean>
+    <bean id="kangemp" class="com.test04.Emp">
+        <property name="name" value="kang"/>
+        <property name="salary" value="1780000"/>
+    </bean>
+    <bean id="kim" class="com.test04.Developer">
+        <constructor-arg name="emp" ref="kimemp"/>
+        <constructor-arg name="dept" value="Dev"/>
+    </bean>
+    <bean id="kang" class="com.test04.Engineer">
+        <constructor-arg name="dept" value="Tec"/>
+        <constructor-arg name="emp" ref="kangemp"/>
+    </bean>
+
+</beans>

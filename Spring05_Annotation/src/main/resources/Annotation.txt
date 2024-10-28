@@ -1,0 +1,9 @@
+Spring Annotation
+Java 1.5 이상 부터 지원
+
+<bean class="org.springframework.bean.factory.annotation.CommonAnnotationBeanPostProcessor"/>
+
+<context:annotation-config/>
+<context:component-scan/>
+<mvc:annotation-driven/>
+

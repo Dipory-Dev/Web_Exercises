@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+    <bean id="tri" class="com.test.entity.Triangle">
+        <property name="height" value="3"/>
+        <property name="title" value="t1"/>
+        <property name="width" value="4"/>
+    </bean>
+    <bean id="rec" class="com.test.entity.Rectangle">
+        <property name="width" value="3"/>
+        <property name="title" value="r1"/>
+        <property name="height" value="4"/>
+    </bean>
+    <bean id="aspect" class="com.test.aop.MyAspect"/>
+
+    <aop:config>
+        <aop:aspect ref="aspect">
+            <aop:pointcut id="method" expression="execution(public * * (..))"/>
+            <aop:before pointcut-ref="method" method="before"/>
+            <aop:after pointcut-ref="method" method="after"/>
+        </aop:aspect>
+    </aop:config>
+</beans>

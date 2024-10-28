@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="myclass" class="com.test01.MyClass"/>
+    <bean id="date" class="java.util.Date"/>
+    <bean id="beantest" class="com.test01.BeanTest">
+        <constructor-arg ref="date"/>
+        <property name="myClass" ref="myclass"/>
+        <property name="myDate" ref="date"/>
+        <property name="mynumber" value="22"/>
+        <property name="arrrry">
+            <array>
+                <value>Kim</value>
+                <value>Lee</value>
+                <value>Park</value>
+                <value>Choi</value>
+            </array>
+        </property>
+        <property name="list">
+            <list>
+                <value>Hwang</value>
+                <value>Shin</value>
+                <value>Kang</value>
+            </list>
+        </property>
+        <property name="map">
+            <map>
+                <entry>
+                    <key><value>1</value></key>
+                    <value>spring</value>
+                </entry>
+                <entry key="2" value="Summer"></entry>
+            </map>
+        </property>
+        <property name="score" ref="sc"/>
+        <property name="score2" ref="sc2"/>
+    </bean>
+    <bean id="sc" class="com.test01.Score">
+        <constructor-arg value="Kim"/>
+        <constructor-arg value="90"/>
+        <constructor-arg value="90"/>
+        <constructor-arg value="100"/>
+    </bean>
+    <bean id="sc2" class="com.test01.Score"/>
+</beans>

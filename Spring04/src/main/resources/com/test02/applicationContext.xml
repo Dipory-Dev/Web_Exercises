@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="favoriteFood" class="com.test02.Food">
+        <property name="name" value="Ramyoen"/>
+        <property name="price" value="1000"/>
+    </bean>
+    <bean id="unFavoriteFood" class="com.test02.Food">
+        <property name="name" value="Weed"/>
+        <property name="price" value="599"/>
+    </bean>
+<!--    <bean id="myfood" class="com.test02.MyFood">-->
+<!--        <property name="favoriteFood" ref="ramyeon"/>-->
+<!--        <property name="unFavoriteFood" ref="weed"/>-->
+<!--    </bean>-->
+
+    <bean id="myfood" autowire="constructor" class="com.test02.MyFood"/>
+
+</beans>
