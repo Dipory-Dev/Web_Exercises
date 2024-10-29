@@ -1,0 +1,16 @@
+DROP TABLE myboard;
+
+CREATE TABLE MYBOARD (
+	myno NUMBER PRIMARY KEY,
+	myname varchar2(1000) NOT NULL,
+	mytitle varchar2(2000) NOT NULL,
+	mycontent varchar2(3000) NOT NULL,
+	mydate DATE NOT null
+);
+
+CREATE SEQUENCE seq_my nocache;
+
+INSERT INTO MYBOARD VALUES
+(seq_my.nextval, '관리자', '스프링 테스트', 'Spring Test...', current_date);
+
+SELECT * FROM MYBOARD;

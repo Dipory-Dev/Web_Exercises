@@ -13,7 +13,7 @@ import java.util.Locale;
 
 @Controller
 public class HomeController {
-    private static final Logger logger = LoggerFactory.getLogger(com.mvc.upgrade.model.controller.HomeController.class);
+    private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String home(Locale locale, Model model) {
