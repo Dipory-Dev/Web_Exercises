@@ -1,27 +1,45 @@
 package com.mvc.upgrade.model.biz;
 
+import com.mvc.upgrade.model.dao.BoardDao;
 import com.mvc.upgrade.model.dto.BoardDto;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class BoardBizImpl implements BoardBiz{
+
+    @Autowired
+    private BoardDao dao;
+
+    @Override
     public List<BoardDto> selectList() {
-        return List.of();
+        List<BoardDto> list = dao.selectList();
+        return list;
     }
 
+    @Override
     public BoardDto selectOne(int myno) {
-        return null;
+        BoardDto dto = dao.selectOne(myno);
+        return dto;
     }
 
-    public void insert(BoardDto board) {
-
+    @Override
+    public int insert(BoardDto board) {
+        int res = dao.insert(board);
+        return res;
     }
 
-    public void update(BoardDto board) {
-
+    @Override
+    public int update(BoardDto board) {
+        return 0;
     }
 
-    public void delete(int myno) {
-
+    @Override
+    public int delete(int myno) {
+        return 0;
     }
+
 }

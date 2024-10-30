@@ -8,7 +8,7 @@ public interface BoardBiz {
 
     public List<BoardDto> selectList();
     public BoardDto selectOne(int myno);
-    public void insert(BoardDto board);
-    public void update(BoardDto board);
-    public void delete(int myno);
+    public int insert(BoardDto board);
+    public int update(BoardDto board);
+    public int delete(int myno);
 }
