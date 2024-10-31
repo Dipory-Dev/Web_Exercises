@@ -16,6 +16,16 @@
     </select>
 
     <insert id="insert">
-        insert into myboard values (seq_my.nextval, #{myname}, #{mytitle}, #{mycontent},current_date)
+        insert into myboard values (seq_my.nextval, #{myname}, #{mytitle},
+        #{mycontent},current_date)
     </insert>
+
+    <update id="update">
+        update myboard set mydate = #{mydate}, mytitle = #{mytitle},
+        mycontent = #{mycontent} where myno = #{myno}
+    </update>
+
+    <delete id="delete">
+        delete from myboard where myno = #{myno}
+    </delete>
 </mapper>

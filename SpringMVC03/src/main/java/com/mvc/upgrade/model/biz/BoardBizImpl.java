@@ -34,12 +34,14 @@ public class BoardBizImpl implements BoardBiz{
 
     @Override
     public int update(BoardDto board) {
-        return 0;
+        int res = dao.update(board);
+        return res;
     }
 
     @Override
     public int delete(int myno) {
-        return 0;
+        int res = dao.delete(myno);
+        return res;
     }
 
 }
