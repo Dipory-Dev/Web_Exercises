@@ -1,0 +1,34 @@
+DROP TABLE myboard;
+
+CREATE TABLE MYBOARD (
+	myno NUMBER PRIMARY KEY,
+	myname varchar2(1000) NOT NULL,
+	mytitle varchar2(2000) NOT NULL,
+	mycontent varchar2(3000) NOT NULL,
+	mydate DATE NOT null
+);
+
+CREATE SEQUENCE seq_my nocache;
+
+INSERT INTO MYBOARD VALUES
+(seq_my.nextval, '관리자', '스프링 테스트', 'Spring Test...', current_date);
+
+SELECT * FROM MYBOARD;
+
+---------------------------
+
+DROP TABLE mymember;
+
+CREATE TABLE mymember(
+	memberno NUMBER PRIMARY KEY,
+	memberid varchar2(1000) NOT NULL,
+	memberpw varchar2(1000) NOT NULL,
+	membername varchar2(1000) NOT NULL
+);
+
+CREATE SEQUENCE seq_member nocache;
+
+INSERT INTO mymember VALUES
+(seq_member.nextval, 'admin', '1234', '관리자');
+
+SELECT * FROM mymember;
