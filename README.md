@@ -162,3 +162,8 @@
 
 ### StrartBoot01
 * Spring Boot 프로젝트 생성 및 실습
+
+
+### SpringBoot02
+* Interface 파일을 이용한 mapper 기능 정의
+* CRUD 기능을 활용하여 DB관리
