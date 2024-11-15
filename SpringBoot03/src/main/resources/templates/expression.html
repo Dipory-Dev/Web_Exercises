@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko" xml:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Expression</title>
+</head>
+<body>
+    <h1>Expression</h1>
+    <p th:text="|Hello, ${name}|"></p>
+    <p th:text="${dto.getSubject()}"></p>
+    <hr>
+
+    <div th:object="${dto}">
+        <p th:text="*{subject}">Subject</p>
+        <p th:text="*{seq}">Seq</p>
+        <p th:text="${name}"></p>
+    </div>
+    <hr>
+
+    <table border="1">
+        <tr>
+            <th>Subject</th>
+            <th>Seq</th>
+        </tr>
+        <tr th:each="dto:${list}">
+            <td th:text="*{dto.subject}"></td>
+            <td th:text="*{dto.seq}"></td>
+        </tr>
+    </table>
+    <hr>
+
+    <div th:object="${dto}">
+        <p th:if="*{seq lt 10}">
+            <span>Big</span>
+        </p>
+        <p th:unless="*{seq lt 10}">
+            <span>Small</span>
+        </p>
+    </div>
+    <hr>
+
+    <div th:each="num:${#numbers.sequence(1, 3)}">
+        <th:block th:switch="${num}">
+            <p th:case="1" th:text="|This is ${num}|"></p>
+            <p th:case="2" th:text="|Second is ${num}|"></p>
+            <p th:case="3" th:text="|Final number is ${num}|"></p>
+        </th:block>
+    </div>
+    <hr>
+
+    <a th:href="@{index.html}">Index</a>
+    <a th:href="@{util}">Utility</a>
+</body>
+</html>

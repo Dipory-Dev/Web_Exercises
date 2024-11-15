@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Utility</title>
+</head>
+<body>
+    <h1>Utility</h1>
+    <p th:text="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm')}"></p>
+    <p th:text="${#numbers.formatInteger(3459.8373,6)}"></p>
+    <p th:text="${#strings.toUpperCase('hello my name is jiseong / this is springboot & thymeleaf')}"></p>
+    <a href="/">Index</a>
+</body>
+</html>
