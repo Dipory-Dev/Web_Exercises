@@ -167,3 +167,13 @@
 ### SpringBoot02
 * Interface 파일을 이용한 mapper 기능 정의
 * CRUD 기능을 활용하여 DB관리
+
+
+### SpringBoot03
+* Thymeleaf를 이용한 MVC패턴 프로젝트 확인
+* Thymeleaf 표현식 활용 (if, unless / each, case)
+
+
+### SpringBoot04
+* Hibernate를 이용하여 CRUD 기능 활용
+* Dao Interface에서 Hibernate의 고유 메서드 확인
