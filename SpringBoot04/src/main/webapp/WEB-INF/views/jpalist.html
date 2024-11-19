@@ -20,7 +20,7 @@
             <tr th:unless="${list.size()==0}" th:each="dto:${list}">
                 <td th:text="${dto.myno}"></td>
                 <td th:text="${dto.myname}"></td>
-                <td th:text="${dto.mytitle}"></td>
+                <td><a th:href="|@{/member/detail}?myno=${dto.myno}|" th:text="${dto.mytitle}"></a></td>
                 <td th:text="${dto.mydate}"></td>
             </tr>
             <tr>

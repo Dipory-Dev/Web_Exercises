@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head xmlns:th="http://www.thymeleaf.org">
+    <meta charset="UTF-8">
+    <title>Detail</title>
+</head>
+<body>
+    <h1>Detail</h1>
+    <table border="1" th:object="${dto}">
+        <tr>
+            <th>No</th>
+            <td th:text="*{myno}"></td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <td th:text="*{myname}"></td>
+        </tr>
+        <tr>
+            <th>Date</th>
+            <td th:text="*{mydate}"></td>
+        </tr>
+        <tr>
+            <th>Title</th>
+            <td th:text="*{mytitle}"></td>
+        </tr>
+        <tr>
+            <th>Content</th>
+            <td><textarea cols="40" rows="10" readonly="readonly" th:text="*{mycontent}"></textarea></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="right">
+                <input type="button" value="Edit" th:onclick="|location.href='updateform?myno=*{myno}'|">
+                <input type="button" value="Delete" th:onclick="|location.href='delete?myno=*{myno}'|">
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
