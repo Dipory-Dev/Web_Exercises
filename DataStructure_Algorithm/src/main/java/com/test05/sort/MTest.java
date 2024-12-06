@@ -29,5 +29,14 @@ public class MTest {
         for (int j : arr3) {
             System.out.print(j + " ");
         }
+
+        System.out.println("----------------");
+        System.out.println("Quick sort");
+        int[] arr4 = {6, 4, 3, 7, 1, 8, 2, 9};
+        QuickSort q = new QuickSort();
+        q.quickSort(arr4, 0, arr4.length - 1);
+        for (int j : arr4) {
+            System.out.print(j + " ");
+        }
     }
 }
